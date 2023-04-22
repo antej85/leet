@@ -6,6 +6,11 @@
     <p>Ooops, något gick fel, kunde inte hämta anställda...</p>
   </div>
   
+  <!-- Loader -->
+  <div v-if="!employeeList.length && !fetchError">
+    <img src="@/assets/images/preloader.gif">
+  </div>
+
   <div
     v-if="employeeList?.length"
     class="employees"
