@@ -1,13 +1,14 @@
 <script setup lang="ts">
-console.log(import.meta.env.VITE_1337_API_KEY)
+import Employees from '@/components/Employees.vue';
+
 </script>
 
 <template>
   <main>
-    
+    <Employees />
   </main>
 </template>
 
-<style scoped>
+<style scoped lang="scss">
 
 </style>
