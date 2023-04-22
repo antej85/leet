@@ -25,7 +25,6 @@
 </template>
   
 <script setup lang="ts">
-import { ref } from 'vue';
 import { useEmployeesStore } from '@/stores/empoyees';
 import EmployeeCard from '@/components/EmployeeCard.vue';
 import { storeToRefs } from 'pinia';
