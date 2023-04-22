@@ -34,7 +34,7 @@
 </template>
 
 <script setup lang="ts">
-import type { Employee } from '@/interfaces/employees.d.ts';
+import type { Employee } from '@/interfaces/employees.interface';
 
 const props = defineProps<{
   employeeData: Employee

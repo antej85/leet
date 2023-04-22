@@ -2,7 +2,7 @@ import { defineStore } from 'pinia';
 import { ref } from 'vue';
 import type { Ref } from 'vue'
 import axios from 'axios';
-import type { Employee } from '@/interfaces/employees.d.ts';
+import type { Employee } from '@/interfaces/employees.interface';
 
 export const useEmployeesStore = defineStore('employees', () => {
   const API_KEY = import.meta.env.VITE_1337_API_KEY;
