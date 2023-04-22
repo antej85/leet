@@ -12,21 +12,23 @@
   </div>
 
   <!-- Employees -->
-  <div
-    v-if="employeeList?.length"
-    class="employees"
-  >
-    <EmployeeCard
-      v-for="employee in employeeList"
-      :key="employee.name"
-      :employee-data="employee"
-    />
+  <div v-if="employeeList?.length">
+    <EmployeeFilter />
+
+    <div class="employees">
+      <EmployeeCard
+        v-for="employee in employeeList"
+        :key="employee.name"
+        :employee-data="employee"
+      />
+    </div>
   </div>
 </template>
   
 <script setup lang="ts">
-import { useEmployeesStore } from '@/stores/empoyees';
+import { useEmployeesStore } from '@/stores/employees';
 import EmployeeCard from '@/components/EmployeeCard.vue';
+import EmployeeFilter from '@/components/EmployeeFilter.vue';
 import { storeToRefs } from 'pinia';
 
 const employeesStore = useEmployeesStore();
