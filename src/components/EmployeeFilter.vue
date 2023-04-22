@@ -5,10 +5,28 @@
     <div class="filter-wrapper">
       <button 
         v-for="office in offices" 
+        @click="employeesStore.toggleOffice(office)"
+        :class="{ selected : employeesStore.selectedOffices.includes(office) }"
         class="filter-button"
       >
         {{ office }}
       </button>
+    </div>
+
+    <!-- Sorting -->
+    <div class="sort-wrapper">
+      <select 
+        v-model="selectedSortOrder"
+        class="sort-input"
+      >
+        <option 
+          v-for="option in sortOptions" 
+          :value="option"
+          :key="option.value"
+        >
+          {{ option.label }}
+        </option>
+      </select>
     </div>
   </div>
 </template>
@@ -17,7 +35,7 @@
 import { useEmployeesStore } from '@/stores/employees';
 import { storeToRefs } from 'pinia';
 const employeesStore = useEmployeesStore();
-const { offices } = storeToRefs(employeesStore);
+const { offices, sortOptions, selectedSortOrder } = storeToRefs(employeesStore);
 
 </script>
 

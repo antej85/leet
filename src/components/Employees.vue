@@ -7,17 +7,17 @@
   </div>
   
   <!-- Loader -->
-  <div v-if="!employeeList.length && !fetchError">
+  <div v-if="!filteredEmployeeList.length && !fetchError">
     <img src="@/assets/images/preloader.gif">
   </div>
 
   <!-- Employees -->
-  <div v-if="employeeList?.length">
+  <div v-if="filteredEmployeeList?.length">
     <EmployeeFilter />
 
     <div class="employees">
       <EmployeeCard
-        v-for="employee in employeeList"
+        v-for="employee in filteredEmployeeList"
         :key="employee.name"
         :employee-data="employee"
       />
@@ -32,7 +32,7 @@ import EmployeeFilter from '@/components/EmployeeFilter.vue';
 import { storeToRefs } from 'pinia';
 
 const employeesStore = useEmployeesStore();
-const { employeeList, fetchError } = storeToRefs(employeesStore);
+const { filteredEmployeeList, fetchError } = storeToRefs(employeesStore);
 </script>
   
 <style lang="scss" scoped>

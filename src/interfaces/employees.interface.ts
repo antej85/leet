@@ -18,3 +18,8 @@ export interface Employee {
   secondaryRole: null,
   area: string
 }
+
+export interface SortOption {
+  label: string,
+  value: string
+}
