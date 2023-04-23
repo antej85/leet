@@ -1,6 +1,10 @@
 // Fonts
 @import 'fonts/sora/sora.scss';
 
+h2 {
+  font-size: clamp(1.2rem, 2.5vw, 2rem);
+}
+
 #app {
   font-family: 'Sora';
   max-width: 1280px;

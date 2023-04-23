@@ -12,17 +12,17 @@ export const useEmployeesStore = defineStore('employees', () => {
   const selectedOffices = ref<string[]>([]);
   
   const selectedSortOrder = ref<SortOption>({
-    label: 'Name',
+    label: 'namn',
     value: 'name'
   },);
   
   const sortOptions: Ref<SortOption[]> = ref([
     {
-      label: 'Name',
+      label: 'namn',
       value: 'name'
     },
     {
-      label: 'Office',
+      label: 'kontor',
       value: 'office',
     }
   ]);

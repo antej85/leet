@@ -7,7 +7,10 @@
   </div>
   
   <!-- Loader -->
-  <div v-if="!filteredEmployeeList.length && !fetchError">
+  <div 
+    v-if="!filteredEmployeeList.length && !fetchError" 
+    class="loader"
+  >
     <img src="@/assets/images/preloader.gif">
   </div>
 
@@ -40,9 +43,17 @@ const { filteredEmployeeList, fetchError } = storeToRefs(employeesStore);
     color: $theme-secondary-color;
   }
 
-  .employees {
-    display:grid;
+  .loader {
+    display: flex;
+    justify-content: center;
     align-items: center;
+    padding: 20px;
+  }
+
+  .employees {
+    display: grid;
+    align-items: center;
+    gap: 20px;
     grid-template-columns: repeat(1, 1fr);
     row-gap: 20px;
 

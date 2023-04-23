@@ -46,8 +46,6 @@ const employee: Employee = props.employeeData;
 <style lang="scss" scoped>
 .employee-card {
   font-size: 0.9rem;
-  height: 420px;
-  width: 240px;
   padding: 0 20px;
   box-shadow: 0 10px 16px 0 rgba(0,0,0,0.2),0 6px 20px 0 rgba(0,0,0,0.19);
   background-color: $white;
@@ -56,21 +54,23 @@ const employee: Employee = props.employeeData;
     display: flex;
     align-items: center;
     justify-content: center;
-    height: 340px;
     object-fit: contain;
 
     img {
+      aspect-ratio: 1/1;
+      object-fit: contain;
       width: 100%;
       height: auto;
     }
   }
   
   .bottom-wrapper {
-    margin-top: 8px;
     min-height: 70px;
+    margin-top: 20px;
+    padding: 8px 0;
     display: flex;
     gap: 8px;
-
+    
     .name {
       flex: 1;
     }
