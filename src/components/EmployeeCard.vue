@@ -7,7 +7,10 @@
     <div class="bottom-wrapper">
       <div class="info">
         <div>{{ employee.name }}</div>
-        <div>{{ employee.office }}</div>
+        
+        <div v-if="employee.office">
+          Office {{ employee.office }}
+        </div>
       </div>
       
       <div class="social-media">

@@ -19,7 +19,7 @@ export interface Employee {
   area: string
 }
 
-export interface SortOption {
+export interface SortOption<T extends keyof Employee> {
   label: string,
-  value: string
+  value: T
 }

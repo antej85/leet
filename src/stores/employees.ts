@@ -6,26 +6,27 @@ import type { Employee, SortOption } from '@/interfaces/employees.interface';
 
 export const useEmployeesStore = defineStore('employees', () => {
   const API_KEY = import.meta.env.VITE_1337_API_KEY;
-  
+
   const fetchError = ref(false);
   const employeeList: Ref<Employee[]> = ref<Employee[]>([]);
   const selectedOffices = ref<string[]>([]);
   
-  const selectedSortOrder = ref<SortOption>({
+  const selectedSortOrder = ref<SortOption<keyof Employee>>({
     label: 'namn',
     value: 'name'
   },);
   
-  const sortOptions: Ref<SortOption[]> = ref([
+  const sortOptions: Ref<SortOption<keyof Employee>[]> = ref([
     {
       label: 'namn',
-      value: 'name'
+      value: 'name' as keyof Employee
     },
     {
       label: 'kontor',
-      value: 'office',
+      value: 'office' as keyof Employee
     }
   ]);
+  
 
   // Store init - Load employees
   axios.get('https://api.1337co.de/v3/employees', {
@@ -70,14 +71,22 @@ export const useEmployeesStore = defineStore('employees', () => {
   // Filtered list of employees
   const filteredEmployeeList = computed<Employee[]>(() => {
     // Filter list
-    let employees = selectedOffices.value.length
+    let employees: Employee[] = selectedOffices.value.length
       ? employeeList.value.filter(employee => selectedOffices.value.includes(employee.office))
       : employeeList.value;
 
+    // Only show published employees
+    employees = employees.filter(employee => employee.published);
+
     // Add sorting
     if (selectedSortOrder.value) {
-      const sortOrder = selectedSortOrder.value.value;
-      employees = employees.sort((a, b) => a[sortOrder] > b[sortOrder] ? 1 : -1);
+      const sortOrder: keyof Employee = selectedSortOrder.value.value;
+      
+      employees = employees.sort((a, b) => {
+        const aValue = a[sortOrder] ?? '';
+        const bValue = b[sortOrder] ?? '';
+        return aValue > bValue ? 1 : - 1;
+      });
     }
 
     return employees;
