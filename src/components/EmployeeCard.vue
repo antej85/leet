@@ -27,7 +27,7 @@
         </div>
 
         <div v-if="employee.twitter">
-          <a :href="`https://www.linkedin.com${employee.twitter}`" target="_blank">
+          <a :href="`https://www.twitter.com/${employee.twitter}`" target="_blank">
             <img src="@/assets/images/twitter.webp">
           </a>
         </div>
