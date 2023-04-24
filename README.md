@@ -1,40 +1,61 @@
-# vue-ts
+#  Kodtest
 
-This template should help get you started developing with Vue 3 in Vite.
+Exempelkomponent för att hämta in och presentera anställda hos 1337 .
 
-## Recommended IDE Setup
+Exempelkomponenten använder sig av Pinia för delat state mellan filter och komponenten som skriver ut listan med anställda.
 
-[VSCode](https://code.visualstudio.com/) + [Volar](https://marketplace.visualstudio.com/items?itemName=Vue.volar) (and disable Vetur) + [TypeScript Vue Plugin (Volar)](https://marketplace.visualstudio.com/items?itemName=Vue.vscode-typescript-vue-plugin).
+### Installerade bibliotek
+**- Axios** tillagd från start för att kunna hantera mer komplex funktionalitet framöver.
+**- SASS** för modern och tydligare CSS.
+**- Pinia** för delat state, för tydligare logik och flöde hellre än att skicka data mellan komponenter genom events.
 
-## Type Support for `.vue` Imports in TS
+### Implementerade user-stories
+**- Reponsiv design** - Eftersom denna är till för en webbsida så bör den kodas enligt mobile-first principen och ha stöd för detta från början.
+**- Modern CSS (SASS)** - För att enklare kunna skala upp projektet när CSSen blir mer avancerad.
+**- Sortera på namn och kontor** - För att denna kändes som bas-funktionalitet för en sådan här komponent och för att visa upp kodkunskaper
+**- Filtrera på namn och kontor** - För att denna kändes som bas-funktionalitet för en sådan här komponent och för att visa upp kodkunskaper
+**- Tillgänglig på publik url (Azure)** - För att enkelt kunna demonstrera resultatet samt påvisa kunskap om deployment. Har heller aldrig använt Azure för detta, så jag ville prova att göra detta som en del av kodtestet.
+**- CI/CD Pipeline från Github till Azure** - För att kunna visa på kunskap om deployment.
+**- TypeScript** - För att påvisa kunskap om TypeScript, samt att jag inte kodat i detta länge, så jag tog denna för att friska upp minnet.
 
-TypeScript cannot handle type information for `.vue` imports by default, so we replace the `tsc` CLI with `vue-tsc` for type checking. In editors, we need [TypeScript Vue Plugin (Volar)](https://marketplace.visualstudio.com/items?itemName=Vue.vscode-typescript-vue-plugin) to make the TypeScript language service aware of `.vue` types.
 
-If the standalone TypeScript plugin doesn't feel fast enough to you, Volar has also implemented a [Take Over Mode](https://github.com/johnsoncodehk/volar/discussions/471#discussioncomment-1361669) that is more performant. You can enable it by the following steps:
+##  Sätt upp utvecklingsmiljön
 
-1. Disable the built-in TypeScript Extension
-    1) Run `Extensions: Show Built-in Extensions` from VSCode's command palette
-    2) Find `TypeScript and JavaScript Language Features`, right click and select `Disable (Workspace)`
-2. Reload the VSCode window by running `Developer: Reload Window` from the command palette.
+Innan du börjar, se till att du har nodejs och npm installerat.
 
-## Customize configuration
+Visual Studio Code [VSCode](https://code.visualstudio.com/) + Plugin för Vue TypeScript + [Volar (https://marketplace.visualstudio.com/items?itemName=Vue.volar)
 
-See [Vite Configuration Reference](https://vitejs.dev/config/).
-
-## Project Setup
-
+Därefter:
+### Installera nödvändiga paket
 ```sh
+
 npm install
+
 ```
 
-### Compile and Hot-Reload for Development
+### Skapa .env.local -fil med systemvariabler
+Denna behövs för att kunna anropa endpointen för anställda. Lägg in din api-nyckel här för lokal utveckling.
+```sh
+VITE_1337_API_KEY=<your_api_key_here>
+```
+
+###  Starta utvecklingsserver med hot-reload
 
 ```sh
+
 npm run dev
+
 ```
 
-### Type-Check, Compile and Minify for Production
+  
+
+###  Typ-kontroll, kompilera och minifiera för produktion
+
+*Deployment mot Azure sker automatiskt vid push till master, så denna behöver inte köras mer än för test.
+  
 
 ```sh
+
 npm run build
+
 ```
