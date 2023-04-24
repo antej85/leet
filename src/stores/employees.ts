@@ -8,7 +8,7 @@ export const useEmployeesStore = defineStore('employees', () => {
   const API_KEY = import.meta.env.VITE_1337_API_KEY;
 
   const fetchError = ref(false);
-  const employeeList: Ref<Employee[]> = ref<Employee[]>([]);
+  const fetchedEmployees: Ref<Employee[]> = ref<Employee[]>([]);
   const selectedOffices = ref<string[]>([]);
   
   const selectedSortOrder = ref<SortOption<keyof Employee>>({
@@ -34,7 +34,7 @@ export const useEmployeesStore = defineStore('employees', () => {
       'Authorization': API_KEY
     }
   })
-    .then(res => employeeList.value = res.data)
+    .then(res => fetchedEmployees.value = res.data)
     .catch(err => {
       console.log(err);
       fetchError.value = true;
@@ -44,7 +44,7 @@ export const useEmployeesStore = defineStore('employees', () => {
   const offices = computed(() => {
     const offices: string[] = [];
     
-    employeeList.value.forEach(employee => {
+    fetchedEmployees.value.forEach(employee => {
       if (employee.office) {
         if (!offices.includes(employee.office)) {
           offices.push(employee.office);
@@ -72,8 +72,8 @@ export const useEmployeesStore = defineStore('employees', () => {
   const filteredEmployeeList = computed<Employee[]>(() => {
     // Filter list
     let employees: Employee[] = selectedOffices.value.length
-      ? employeeList.value.filter(employee => selectedOffices.value.includes(employee.office))
-      : employeeList.value;
+      ? fetchedEmployees.value.filter(employee => selectedOffices.value.includes(employee.office))
+      : fetchedEmployees.value;
 
     // Only show published employees
     employees = employees.filter(employee => employee.published);
