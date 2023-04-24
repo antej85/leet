@@ -8,7 +8,7 @@ export const useEmployeesStore = defineStore('employees', () => {
   const API_KEY = import.meta.env.VITE_1337_API_KEY;
 
   const fetchError = ref(false);
-  const fetchedEmployees: Ref<Employee[]> = ref<Employee[]>([]);
+  const fetchedEmployees: Ref<Employee[]> = ref([]);
   const selectedOffices = ref<string[]>([]);
   
   const selectedSortOrder = ref<SortOption<keyof Employee>>({
