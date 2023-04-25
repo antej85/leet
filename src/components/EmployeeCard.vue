@@ -1,7 +1,7 @@
 <template>
   <div class="employee-card">
     <div class="image">
-      <img :src="employee.imagePortraitUrl">
+      <img :src="employee.imagePortraitUrl" alt="Employee photo">
     </div>
     
     <div class="bottom-wrapper">
@@ -16,19 +16,19 @@
       <div class="social-media">
         <div v-if="employee.linkedIn">
           <a :href="`https://www.linkedin.com${employee.linkedIn}`" target="_blank">
-            <img src="@/assets/images/linkedin.png" alt="Employee photo">
+            <img src="@/assets/images/linkedin.png" alt="LinkedIn">
           </a>
         </div>
 
         <div v-if="employee.gitHub">
           <a :href="`https://www.github.com/${employee.gitHub}`" target="_blank">
-            <img src="@/assets/images/github.png">
+            <img src="@/assets/images/github.png" alt="Github">
           </a>
         </div>
 
         <div v-if="employee.twitter">
           <a :href="`https://www.twitter.com/${employee.twitter}`" target="_blank">
-            <img src="@/assets/images/twitter.webp">
+            <img src="@/assets/images/twitter.webp" alt="Twitter">
           </a>
         </div>
       </div>
