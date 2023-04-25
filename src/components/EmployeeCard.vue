@@ -16,7 +16,7 @@
       <div class="social-media">
         <div v-if="employee.linkedIn">
           <a :href="`https://www.linkedin.com${employee.linkedIn}`" target="_blank">
-            <img src="@/assets/images/linkedin.png">
+            <img src="@/assets/images/linkedin.png" alt="Employee photo">
           </a>
         </div>
 

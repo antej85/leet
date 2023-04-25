@@ -5,6 +5,7 @@
     <div class="filter-wrapper">
       <button 
         v-for="office in offices" 
+        type="button"
         @click="employeesStore.toggleOffice(office)"
         :class="{ selected : selectedOffices.includes(office) }"
         class="filter-button"
